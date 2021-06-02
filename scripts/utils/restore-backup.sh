@@ -1,15 +1,14 @@
 #!/bin/bash
 
+backup_name=${1:-latest}
+keyspace_name=${2:-my_custom_keyspace}
+table_name=${3:-my_table-089bd870c38511eb8fe8cb54ec2c663c}
+
 backup_folder=/backup
-data_location=/var/lib/cassandra/data
 
-keyspace_name=example
+mkdir -p /tmp/${keyspace_name}
+ln -sf ${backup_folder}/${keyspace_name}/${table_name}/latest /tmp/${keyspace_name}/${table_name}
 
+sstableloader -d localhost /tmp/${keyspace_name}/${table_name}
 
-echo "Deleting commitlog and table data"
-rm -rf $(basedir ${data_location})/commitlog
-
-for table in ${data_location}
-do
-  rm -rf ${table}/*
-done
+nodetool repair -- ${keyspace_name} $(echo ${table_name} | cut -d'-' -f1)
