@@ -1,11 +1,11 @@
 #!/bin/bash
 
+set -e
+
 backup_folder=/backup
 data_location=/var/lib/cassandra/data
 
-snapshot_prefix=snapshot
-snapshot_name=${snapshot_prefix}-$(date +%d-%m-%YT%H-%M)
-keyspace_name=$1
+keyspace_name=${1:-my_custom_keyspace}
 
 echo "Force enable incremental backups"
 nodetool enablebackup

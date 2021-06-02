@@ -5,8 +5,8 @@ set -e
 backup_folder=/backup
 data_location=/var/lib/cassandra/data
 
-snapshot_name=$1
-keyspace_name=$2
+snapshot_name=${1:-snapshot-$(date +%d-%m-%YT%H-%M)}
+keyspace_name=${2:-my_custom_keyspace}
 
 bash /script/force-incremental-backup.sh ${keyspace_name}
 

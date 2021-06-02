@@ -1,7 +1,6 @@
 #!/bin/bash
 
-snapshot_prefix=snapshot
-snapshot_name=${snapshot_prefix}-$(date +%d-%m-%YT%H-%M)
+snapshot_name=snapshot-$(date +%d-%m-%YT%H-%M)
 
 keyspace_name=my_custom_keyspace
 
