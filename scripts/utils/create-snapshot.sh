@@ -8,7 +8,7 @@ data_location=/var/lib/cassandra/data
 snapshot_name=${1:-snapshot-$(date +%d-%m-%YT%H-%M)}
 keyspace_name=${2:-my_custom_keyspace}
 
-bash /script/force-incremental-backup.sh ${keyspace_name}
+bash /scripts/force-incremental-backup.sh ${keyspace_name}
 
 echo "Creating snapshot ${snapshot_name}"
 nodetool snapshot ${keyspace_name} --tag ${snapshot_name}

@@ -26,5 +26,6 @@ do
   table_name=$(basename $(dirname ${incremental_backup_folder}))
 
   echo "Moving files for latest incremental backup for table ${table_name}"
-  cp -r ${incremental_backup_folder}/* ${backup_folder}/${keyspace_name}/${table_name}/incremental-backup-latest
+  mkdir -p ${backup_folder}/${keyspace_name}/${table_name}/incremental-backup-latest
+  cp -r ${incremental_backup_folder} ${backup_folder}/${keyspace_name}/${table_name}/incremental-backup-latest
 done
