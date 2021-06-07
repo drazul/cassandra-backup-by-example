@@ -30,7 +30,7 @@ setting the value `incremental_backups` to `true`, or using nodetool application
 
 ## How the backup system works in Cassandra
 
-Cassandra backup system is very simple: it creates a hard link to the [SSTable](https://www.geeksforgeeks.org/sstable-in-apache-cassandra/) file used to store running data,
+Cassandra backup system is very simple: it creates a hard link to the [SSTable](https://docs.datastax.com/en/archived/cassandra/3.0/cassandra/dml/dmlHowDataWritten.html) file used to store running data,
 so we need to understand Cassandra file structure first.
 
 Cassandra manages stored data in a set of files, with an extension '.db', named SSTables.
