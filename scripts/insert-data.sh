@@ -5,7 +5,7 @@ tmpfile=$(mktemp)
 cat << EOF > ${tmpfile}
 
 CREATE KEYSPACE IF NOT EXISTS my_custom_keyspace
-WITH replication = {'class': 'SimpleStrategy', 'replication_factor' : 3};
+WITH replication = {'class': 'SimpleStrategy', 'replication_factor' : 2};
 
 USE my_custom_keyspace;
 

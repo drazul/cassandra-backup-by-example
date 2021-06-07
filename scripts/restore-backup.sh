@@ -8,7 +8,6 @@ snapshot_location=backup/cassandra-node-0/my_custom_keyspace/my_table-089bd870c3
 docker run -ti -v $(pwd)/${snapshot_location}:/${snapshot_location} --rm --network host cassandra:3 cqlsh localhost 9042 --file /${snapshot_location}
 
 
-snapshot_path=backup/cassandra-node-0/my_custom_keyspace/my_table-089bd870c38511eb8fe8cb54ec2c663c/snapshot-02-06-2021T13-28
 for container_id in $(docker-compose ps -q)
 do
   echo "Restoring SSTables from container ${container_id}"
